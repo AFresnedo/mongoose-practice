@@ -20,12 +20,17 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // TODO: Replace stub route with page that renders form for adding new museum
-  res.send('STUB - NEW MUSEUM POST');
+  db.Museum.create(req.body)
+    .then(() => {
+      res.redirect('/museums');
+    })
+    .catch(err => {
+      console.log('problem creating museum:', err);
+      res.redirect('/museums/new');
+    });
 });
 
 router.get('/new', (req, res) => {
-  // TODO: Replace stub route with page that renders form for adding new museum
   res.render('museums/new');
 });
 
