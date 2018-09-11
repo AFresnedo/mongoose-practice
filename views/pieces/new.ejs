@@ -24,35 +24,43 @@
   </div>
   <div class="form-group">
     <label for="image">Image URL:</label>
-    <input type="text" id="image" name="image" class="form-control" placeholder="link to pic of piece">
-  </div>
-  <div class="form-group">
-    <label for="originCountry">Country of Origin:</label>
-    <input type="text" id="originCountry" name="originCountry" class="form-control" placeholder="origin country">
+    <input type="text" id="image" name="img" class="form-control" placeholder="link to pic of piece">
   </div>
   <fieldset class="custom-fieldset">
     <legend class="custom-legend">Creator</legend>
 
     <div class="form-group">
       <label for="creator_firstname">First Name:</label>
-      <input type="text" id="creator_firstname" name="creator_firstname" class="form-control" placeholder="creator firstname">
+      <input type="text" id="creator_firstname" name="creator_firstName" class="form-control" placeholder="creator firstname">
     </div>
     <div class="form-group">
       <label for="creator_lastname">Last Name:</label>
-      <input type="text" id="creator_lastname" name="creator_lastname" class="form-control" placeholder="creator lastname">
+      <input type="text" id="creator_lastname" name="creator_lastName" class="form-control" placeholder="creator lastname">
     </div>
     <div class="form-group">
       <label for="creator_image">Image:</label>
-      <input type="text" id="creator_image" name="creator_image" class="form-control" placeholder="creator image">
+      <input type="text" id="creator_image" name="creator_img" class="form-control" placeholder="creator image">
     </div>
     <div class="form-group">
       <label for="creator_birthyear">Birth Year:</label>
-      <input type="number" id="creator_birthyear" name="creator_birthyear" class="form-control" placeholder="creator birth year">
+      <input type="number" id="creator_birthyear" name="creator_birthYear" class="form-control" placeholder="creator birth year">
     </div>
     <div class="form-group">
       <label for="creator_deathyear">Death Year:</label>
-      <input type="number" id="creator_deathyear" name="creator_deathyear" class="form-control" placeholder="creator death year">
+      <input type="number" id="creator_deathyear" name="creator_deathYear" class="form-control" placeholder="creator death year">
     </div>
   </fieldset>
+
+  <div class="form-group">
+    <label for="museum">Museum:</label>
+    <!-- id in select's attribute will match with label's for attribute -->
+    <select name="museum" id="museum" class="form-control">
+      <% museums.forEach(m => { %>
+        <option value="<%= m.id %>">
+        <%= m.name %>
+        </option>
+      <% }); %>
+    </select>
+  </div>
   <input type="submit" value="Register Piece" class="btn btn-success">
 </form>
