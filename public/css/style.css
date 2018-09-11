@@ -7,3 +7,15 @@
   text-align: center;
   margin: 20px 0;
 }
+
+.custom-fieldset {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 30px;
+  margin-bottom: 15px;
+}
+
+/* this is to prevent whitespace explosion after legend */
+.custom-legend {
+  width: inherit;
+}
