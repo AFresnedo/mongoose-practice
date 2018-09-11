@@ -1,6 +1,9 @@
 // Require needed modules
 const express = require('express');
 
+// grab models
+const db = require('../models');
+
 // Declare router
 const router = express.Router();
 
@@ -10,8 +13,14 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // TODO: Replace stub route with page that renders form for adding new piece
-  res.send('STUB - NEW PIECES POST');
+  db.Piece.create(req.body)
+    .then(() => {
+      res.redirect('/pieces');
+    })
+    .catch(err => {
+      console.log('err creating piece:', err);
+      res.send('err creating piece, check log');
+    });
 });
 
 router.get('/new', (req, res) => {
