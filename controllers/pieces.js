@@ -22,9 +22,20 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  db.Piece.create(req.body)
-    .then(() => {
-      res.redirect('/pieces');
+  db.Piece.create({
+    name: req.body.name,
+    img: req.body.img,
+    museum: req.body.museum,
+    creator: {
+      firstName: req.body.creator_firstName,
+      lastName: req.body.creator_lastName,
+      img: req.body.creator_img,
+      birthYear: req.body.creator_birthYear,
+      deathYear: req.body.creator_deathYear
+    }
+  })
+    .then(result => {
+      res.redirect(`/pieces/${result.id}`);
     })
     .catch(err => {
       console.log('err creating piece:', err);
