@@ -1,5 +1,15 @@
 <h2 class="text-center">Museums List</h2>
 
-<% museums.forEach(museum => { %>
-  <a href='/museums/<%= museum.id %>'><%=museum.name%></a>
-<% }); %>
+<% if(museums && museums.length > 0) { %>
+
+  <% museums.forEach(museum => { %>
+    <h4 class="text-center">
+      <a href="/museums/<%= museum.id %>"><%=museum.name%> </a>
+      &mdash; (<%= museum.city %>, <%= museum.country %>)
+    </h4>
+  <% }); %>
+
+<% } else { %>
+  No museums are currently listed. You may add additonal museums at
+  <a href="/museums/new">Museum Registration Page</a>
+<% } %>

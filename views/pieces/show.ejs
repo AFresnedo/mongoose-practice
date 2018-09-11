@@ -1,2 +1,19 @@
-<!-- DELETE CODE BELOW THIS LINE -->
-<h2>TODO: Show a specific Piece</h2>
+<h2 class="text-center">Pieces List</h2>
+
+<% if(pieces && pieces.length > 0) {%>
+  <div>
+    <% pieces.forEach(p => { %>
+      <a href="/pieces/<%= p.id %>"
+        <%= p.name %>
+      </a>
+      (<%= p.museum.name %> &mdash; <%= p.museum.city %>)
+  </div>
+  <% }); %>
+
+<% } else { %>
+  <h3>No famous pieces found.</h3>
+  <p>
+  Try adding a new piece on the
+  <a href="/pieces/new">Piece Registration Page</a>
+  </p>
+<% } %>

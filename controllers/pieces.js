@@ -7,9 +7,18 @@ const db = require('../models');
 // Declare router
 const router = express.Router();
 
+// NOTE: populate to provide model.referencedModel.field access
+// NOTE: lookup populate to see what you can do with it (function inside?)
 router.get('/', (req, res) => {
-  // TODO: Replace stub route with page that renders list of all pieces
-  res.render('pieces/index');
+  db.Piece.find()
+    .populate('museum')
+    .then(pieces => {
+      res.render('pieces/index', { pieces });
+    })
+    .catch(err => {
+      console.log(err);
+      res.render('error');
+    });
 });
 
 router.post('/', (req, res) => {
